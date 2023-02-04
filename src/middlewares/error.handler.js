@@ -1,7 +1,7 @@
-const errorHandler = async (err, req, res, next) => {
-  res.json({
+const errorHandler = (err, req, res, next) => {
+  return res.json({
     message: err.message,
-    error: err.error
+    error: true
   })
 };
 module.exports = {
