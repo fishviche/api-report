@@ -1,10 +1,10 @@
 const { Pool } = require('pg');
 const pool = new Pool({
-  host: 'db_inmigration',
-  port: 5432,
-  user: 'inmigration',
-  password: 'y2K.inmIG21',
-  database: 'inmigration'
+  host: 'localhost',
+  port: 5440,
+  user: 'db-test-pg',
+  password: 'a1c.13s1',
+  database: 'testpg'
 });
 module.exports = {
   async query(text, params){
