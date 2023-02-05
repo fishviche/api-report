@@ -27,10 +27,8 @@ CREATE TABLE IF NOT EXISTS reporter (
     district_id INT NOT NULL,
     created_at timestamp without time zone  NOT NULL DEFAULT NOW(),
     name VARCHAR NOT NULL,
-    email VARCHAR NOT NULL,
     age INT NOT NULL,
     document_number VARCHAR NOT NULL,
-    geolocation JSONB NOT NULL,
     CONSTRAINT fk_district_id FOREIGN KEY (district_id) REFERENCES district(district_id)
 );
 CREATE TABLE IF NOT EXISTS category (
@@ -56,3 +54,4 @@ CREATE TABLE IF NOT EXISTS report (
     CONSTRAINT fk_category_id FOREIGN KEY (category_id) REFERENCES category(category_id),
     CONSTRAINT fk_district_id FOREIGN KEY (district_id) REFERENCES district(district_id)
 );
+INSERT INTO category(name) VALUES ('Limpieza'), ('Delicuencia');
