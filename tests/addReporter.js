@@ -31,6 +31,6 @@ const addReporter = async() => {
   );
 }
 // Add 100k users;
-for(let i = 1; i < 100000; i ++){
-  addReporter()
-}
+// for(let i = 1; i < 100000; i ++){
+//   addReporter()
+// }
