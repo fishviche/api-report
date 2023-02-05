@@ -1,28 +1,19 @@
-const db = require('../database/database.js');
+const { pool } = require('../database/database.js');
+const reportService = require('../services/report.service.js')
 const reportCtr = {};
 
 
 reportCtr.getReports = async (req, res) => {
-  const response = await db.query('SELECT * FROM report', []);
-  res.send({ data: response.rows })
+  const response = await reportService.getReport(req.query)
+  res.json(response)
 }
 
-reportCtr.saveReport = async (req, res) => {
-  try {
-    const { name } = req.body;
-    query = 'INSERT INTO category(name) VALUES ($1) RETURNING category_id'
-    const response = await db.query(query, [name]);
-    res.status(200).json({
-      message: `User added with ID: ${response.rows[0].category_id}`,
-      error: false
-    })
+reportCtr.addReport = async (req, res, next) => {
+  try{
+    const response = await reportService.addReport(req.body);
+    res.status(200).json(response);
   } catch (error) {
-    console.log(error);
-    res.json({
-      error: true
-    })
-  } finally {
-    await pool.end();
+    next(error);
   }
 }
 module.exports = reportCtr;
