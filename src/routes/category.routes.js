@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const router = Router();
-const { saveCategory, getOneCategory , getCategories } = require('../controllers/category.controller');
+const { addSubCategory, getSubCategory , getCategories } = require('../controllers/category.controller');
 
-router.post('/save-category', saveCategory);
+router.post('/sub-category/add-category', addSubCategory);
 router.get('/get-category', getCategories);
-router.get('/get-one-category/:id', getOneCategory);
+router.get('/sub-category/get-sub-category', getSubCategory);
 module.exports = router;

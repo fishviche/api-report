@@ -1,24 +1,24 @@
 const { pool } = require('../database/database.js');
 const categoryService = {}
 
-categoryService.getOneCategory = async (categoryId) => {
-  const response = await pool.query(`SELECT * FROM category WHERE category_id = $1`, [ categoryId ] );
-  return response.rows[0] ? response.rows[0] : {};
+categoryService.getSubCategory = async () => {
+  const response = await pool.query(`SELECT * FROM subcategory`, [] );
+  return response.rows ? response.rows : [];
 };
 
-categoryService.getCategories = async (categoryId) => {
+categoryService.getCategories = async () => {
   const response = await pool.query(`SELECT * FROM category`, [] );
   return response.rows ? response.rows : [];
 };
 
-categoryService.addCategory = async (data) => {
-  const { name } = data;
+categoryService.addSubCategory = async (data) => {
+  const { category_id, name } = data;
   response = await pool.query(
-    `INSERT INTO category(name)
-      VALUES ($1) RETURNING category_id`, [ name ]
+    `INSERT INTO subcategory(category_id, name)
+      VALUES ($1, $2) RETURNING subcategory_id`, [ category_id, name ]
   );
   return {
-    message: `Category added with ID: ${response.rows[0].category_id}`,
+    message: `Sub-Category added with ID: ${response.rows[0].subcategory_id}`,
     error: false
   }
 };
