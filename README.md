@@ -34,7 +34,7 @@ This API seeks to register complaints regarding cleanliness and crime. The compl
 
 Simple flow example:
 
-- The user registers..
+- The user registers.
 - The user registers his complaint with the data obtained from other APIs.
 
 ### **API Endpoints**
