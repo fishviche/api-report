@@ -60,6 +60,10 @@ List of available routes:
 `GET /location/get-province?state_id=` - get provinces\
 `GET /location/get-district?province_id=` - get districts\
 
+**Excel routes**:\
+`GET report-excel/get-report-excel` - get excel\
+
+
 ### **API POSTMAN DOCUMENTACION / EXAMPLES**
 
 https://documenter.getpostman.com/view/15831629/2s935oM4k9
