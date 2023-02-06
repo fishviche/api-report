@@ -10,13 +10,14 @@ URL: https://drive.google.com/file/d/1CCcL2AeeKTzX-6pkysBOleqJN4-ntE89/view?usp=
 ```bash
 unzip testdb.zip
 ```
+3. Configure .env and docker-compose with db name and db password.
 
-3. Execute the docker compose
+4. Execute the docker compose
 ```bash
 docker-compose up -d
 ```
 
-4. Upload data from sql
+5. Upload data from sql
 ```bash
 docker exec -i <container-id> psql -U <db-name> < $(pwd)/testdb.sql
 ```
