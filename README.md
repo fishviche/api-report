@@ -62,6 +62,7 @@ List of available routes:
 
 **Excel routes**:\
 `GET report-excel/get-report-excel` - get excel\
+`GET report-excel/get-report-by-district` - get report by district\
 
 
 ### **API POSTMAN DOCUMENTACION / EXAMPLES**
