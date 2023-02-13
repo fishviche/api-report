@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS reporter (
     created_at timestamp without time zone  NOT NULL DEFAULT NOW(),
     name VARCHAR NOT NULL,
     age INT NOT NULL,
-    document_number VARCHAR NOT NULL,
+    document_number VARCHAR NOT NULL UNIQUE,
     CONSTRAINT fk_district_id FOREIGN KEY (district_id) REFERENCES district(district_id)
 );
 CREATE TABLE IF NOT EXISTS category (
@@ -49,9 +49,11 @@ CREATE TABLE IF NOT EXISTS report (
     geolocation JSONB NOT NULL,
     params JSONB NOT NULL,
     score INT,
+    reported_in timestamp without time zone  NOT NULL DEFAULT NOW(),
     CONSTRAINT valid_score CHECK (score <= 10 AND score > 0),
     CONSTRAINT fk_reporter_id FOREIGN KEY (reporter_id) REFERENCES reporter(reporter_id),
     CONSTRAINT fk_category_id FOREIGN KEY (category_id) REFERENCES category(category_id),
     CONSTRAINT fk_district_id FOREIGN KEY (district_id) REFERENCES district(district_id)
 );
 INSERT INTO category(name) VALUES ('Limpieza'), ('Delicuencia');
+CREATE INDEX report_index ON REPORT(report_id, reported_in, reporter_id, category_id, district_id);
